@@ -1,0 +1,5 @@
+/* Run with Node.js from the extracted delivery folder, outside the restricted execution environment. */
+const http=require('node:http'),fs=require('node:fs'),path=require('node:path');
+const root=__dirname;
+const types={'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.webp':'image/webp','.jpg':'image/jpeg','.png':'image/png','.md':'text/plain; charset=utf-8','.json':'application/json'};
+http.createServer((req,res)=>{const pathname=decodeURIComponent(new URL(req.url,'http://localhost').pathname);let p=path.resolve(root,'.'+pathname);if(p!==root&&!p.startsWith(root+path.sep)){res.writeHead(403).end();return;}try{if(fs.statSync(p).isDirectory())p=path.join(p,'index.html');const data=fs.readFileSync(p);res.writeHead(200,{'Content-Type':types[path.extname(p)]||'application/octet-stream'});res.end(data);}catch{res.writeHead(404).end('Not found');}}).listen(4173,'127.0.0.1',()=>console.log('Abra http://127.0.0.1:4173/read/approve/ no seu navegador. Ctrl+C encerra a prévia.'));

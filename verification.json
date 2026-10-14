@@ -1,0 +1,18 @@
+{
+  "checks": "static only, browser QA not executed due environment restrictions",
+  "sections": 6,
+  "photos": 12,
+  "all_local_image_files_valid": true,
+  "reserved_image_dimensions": true,
+  "html_css_js_no_external_runtime_dependencies": true,
+  "copy_words_including_metadata": 632,
+  "errors": [],
+  "pending": [
+    "desktop visual inspection",
+    "390px mobile visual inspection",
+    "hover and touch browser tests",
+    "CLS measurement",
+    "screenshots from actual browser",
+    "deployment to rawdataclub.com/read/approve"
+  ]
+}
